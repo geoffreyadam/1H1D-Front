@@ -7,6 +7,7 @@
 
 <style>
   @import './assets/styles/header.css';
+  @import './assets/styles/main.css';
 </style>
 
 <script>

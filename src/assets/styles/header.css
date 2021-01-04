@@ -1,0 +1,51 @@
+/* background-color : #EFF1F5; */
+
+.header {
+  background-color: #EFF1F5;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  padding: 20px;
+  z-index: 1000;
+}
+.header > section {
+  width: 45px;
+  height: 45px;
+  position: relative;
+}
+.header section a {
+  width: 45px;
+  height: 45px;
+  z-index: 1002;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header a:hover {
+  cursor: pointer;
+}
+.header section svg{
+  width: 25px;
+  height: 25px;
+  z-index: 1002;
+}
+.header_active {
+  position: absolute;
+  bottom: 0;
+  background-color: blue;
+  height: 45px;
+  width: 45px;
+  border-radius: 100px;
+  z-index: 1001;
+}
+
+.headertransition-enter-active{
+  transition: opacity 1s ease;
+}
+.headertransition-enter
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
