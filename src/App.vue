@@ -5,9 +5,9 @@
   </div>
 </template>
 
-<style>
-  @import './assets/styles/header.css';
-  @import './assets/styles/main.css';
+<style lang="less" scoped>
+  @import './assets/styles/header.less';
+  @import './assets/styles/main.scss';
 </style>
 
 <script>
