@@ -1,6 +1,62 @@
+@backMain: #1E2026;
+@backSecond: #242730;
+@main : #936EE5;
+
 .header {
   section {
-    background-color: blue;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    a {
+      width: 45px;
+      height: 45px;
+      z-index: 1002;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    a:hover {
+      cursor: pointer;
+    }
+    svg {
+      width: 25px;
+      height: 25px;
+      z-index: 1002;
+      fill: @main;
+    }
   }
-  background-color: red;
+  section:hover {
+    svg {
+      fill: #ffffff;
+      transition: all ease 0.25s;
+    }
+    div {
+      background-color: @main;
+      position: absolute;
+      bottom: 0;
+      height: 45px;
+      width: 45px;
+      border-radius: 100px;
+      z-index: 1001;
+      transition: all ease 0.15s;
+    }
+  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: @backSecond;
+  height: 50px;
+  width: calc(100vw - 40px);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0px 1px 25px -10px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 1px 25px -10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 1px 25px -10px rgba(0,0,0,0.75);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  z-index: 1000;
 }
