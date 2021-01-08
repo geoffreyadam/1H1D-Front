@@ -1,7 +1,9 @@
-@backMain: #1E2026;
-@backSecond: #242730;
-@main : #936EE5;
+@backMain: #131315;
+@backSecond: #201F25;
+@main: #259CB0;
+@second: #A87044;
 
+@transition: all ease 0.35s;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 body, html {
@@ -19,4 +21,74 @@ h1, h2, h3, h4, h5, h6 {
 .marged {
   padding-left: 15px;
   padding-right: 15px;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 750px;
+  section {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    label {
+      color: @second;
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 400;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      div {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        &:focus {
+          outline: none;
+        }
+        svg {
+          width: 20px;
+          height: 20px;
+          fill: @second;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    input {
+      flex-basis: 100%;
+      background-color: @backSecond;
+      outline: none;
+      border: 1px solid @second;
+      border-radius: 100px;
+      padding: 10px 10px 10px 20px;
+      color: white;
+      margin-bottom: 25px;
+      &:focus {
+        border-color: white;
+      }
+    }
+  }
+  > button {
+    background-color: @main;
+    padding: 10px 40px;
+    border: 1px solid @main;
+    border-radius: 100px;
+    width: fit-content;
+    transition: @transition;
+    &:hover {
+      cursor: pointer;
+      background-color: transparent;
+      color: @main;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 }
