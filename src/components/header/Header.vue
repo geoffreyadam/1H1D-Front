@@ -47,11 +47,6 @@ export default {
       active: '',
       hovered: ''
     }
-  },
-  methods: {
-  },
-  beforeMount () {
-    this.active = localStorage.header
   }
 }
 </script>
