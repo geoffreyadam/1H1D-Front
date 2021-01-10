@@ -1,10 +1,12 @@
 <template>
   <section class="marged">
     <h1>Créer un compte</h1>
-    <form action="">
+    <common-star></common-star>
+    <form action="" v-on:submit.prevent="checkForm">
       <section>
         <label for="email">Email</label>
-        <input type="email" id ="email">
+        <input v-model="email" type="email" id="email">
+        <p v-if="errors.include('email')"></p>
       </section>
       <section>
         <label for="password">
@@ -20,7 +22,9 @@
             </svg>
           </div>
         </label>
-        <input :type="hidePassword" id="password">
+        <small>Minimum 8 caractères</small>
+        <input v-model="password" :type="hidePassword" id="password">
+        <p v-if="errors.include('password')"></p>
       </section>
       <section>
         <label for="password_confirm">
@@ -36,7 +40,9 @@
             </svg>
           </div>
         </label>
-        <input :type="hideConfirmPassword" id="password_confirm">
+        <small>Minimum 8 caractères</small>
+        <input v-model="confirmPassword" :type="hideConfirmPassword" id="password_confirm">
+        <p v-if="errors.include('passwordConfirm')"></p>
       </section>
       <button>Créer un compte</button>
     </form>
@@ -44,12 +50,21 @@
 </template>
 
 <script>
+
+import CommonStar from '../../components/Common-star'
+
 export default {
   name: 'Register',
+  components: {
+    CommonStar
+  },
   data: function () {
     return {
       hidePassword: 'password',
-      hideConfirmPassword: 'password'
+      hideConfirmPassword: 'password',
+      email: '',
+      password: '',
+      confirmPassword: ''
     }
   },
   methods: {
@@ -60,6 +75,11 @@ export default {
       } else if (id === 'password_confirm') {
         this.hideConfirmPassword = this.hideConfirmPassword === 'password' ? 'text' : 'password'
       }
+    },
+    checkForm: function () {
+      console.log(this.email)
+      console.log(this.password)
+      console.log(this.confirmPassword)
     }
   }
 }
