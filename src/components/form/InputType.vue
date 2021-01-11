@@ -14,16 +14,16 @@
       </div>
     </label>
     <small v-if="restriction">{{restriction}}</small>
-    <input v-if="type === 'password'" :type="hidePassword" :id="id">
-    <input v-if="type !== 'password'" :type="type" :id="id">
     <p v-if="error">{{ error }}</p>
+    <input v-model="typed" @input="changedTyped()" v-if="type === 'password'" :type="hidePassword" :id="id" v-bind:class="{hasError: error}">
+    <input v-model="typed" @input="changedTyped()" v-if="type !== 'password'" :type="type" :id="id" v-bind:class="{hasError: error}">
   </section>
 </template>
 
 <script>
 export default {
   name: 'input-type',
-  props: ['type', 'name', 'id', 'restriction', 'error'],
+  props: ['type', 'name', 'id', 'restriction', 'error', 'value'],
   data () {
     return {
       hidePassword: 'password',
@@ -36,12 +36,9 @@ export default {
         this.hidePassword = this.hidePassword === 'password' ? 'text' : 'password'
       }
     },
-    changedTyped: function (typed) {
-      console.log(typed)
+    changedTyped: function () {
+      this.$emit('input', this.typed)
     }
   }
 }
 </script>
-
-<style>
-</style>
