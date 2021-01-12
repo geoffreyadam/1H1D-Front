@@ -78,7 +78,7 @@ form {
     }
     input {
       flex-basis: 100%;
-      background-color: @backSecond;
+      background-color: @backSecond !important;
       outline: none;
       border: 1px solid @second;
       border-radius: 100px;
@@ -87,7 +87,7 @@ form {
       margin-top: 10px;
       margin-bottom: 25px;
       &:focus {
-        border-color: white;
+        border-color: @main;
       }
       &.hasError {
         border-color: #7D0902;
@@ -107,6 +107,7 @@ form {
       font-size: 13px;
       line-height: 1.5;
       color: #7D0902;
+      flex-basis: 100%;
     }
   }
   > button {
