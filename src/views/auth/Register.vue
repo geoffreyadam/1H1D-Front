@@ -5,6 +5,9 @@
       <input-type v-model="email" type="email" name="Email" id="email" :error='emailError'></input-type>
       <input-type v-model="password" type="password" name="Mot de passe" id="password" restriction="Minimum 8 caractères" :error='passwordError'></input-type>
       <input-type v-model="confirmPassword" type="password" name="Confirmer le mot de passe" id="confirm_password" restriction="Minimum 8 caractères" :error='confirmPasswordError'></input-type>
+      <p class="errors" v-for="apiError in apiErrors" :key="apiError">
+        {{ apiError[0] }}
+      </p>
       <button>Créer un compte</button>
     </form>
   </section>
@@ -12,6 +15,7 @@
 
 <script>
 import InputType from '../../components/form/InputType'
+import axios from 'axios'
 
 export default {
   name: 'Register',
@@ -25,7 +29,8 @@ export default {
       confirmPassword: '',
       emailError: '',
       passwordError: '',
-      confirmPasswordError: ''
+      confirmPasswordError: '',
+      apiErrors: []
     }
   },
   methods: {
@@ -46,9 +51,16 @@ export default {
       this.passwordError = this.password !== this.confirmPassword ? 'Les mots de passe doivent être identiques' : ''
 
       if (this.emailError === '' && this.passwordError === '' && this.confirmPasswordError === '') {
-        console.log('Form OK')
-      } else {
-        console.log('Form not OK')
+        axios
+          .get('http://127.0.0.1:8000/api/register', {
+            headers: {
+              token: '1234'
+            }
+          })
+          .then(response => {
+            this.apiErrors = JSON.parse(JSON.stringify(response.data))
+            console.log(JSON.parse(JSON.stringify(response.data)))
+          })
       }
     },
     changeUsername (username) {

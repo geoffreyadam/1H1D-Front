@@ -3,6 +3,7 @@
 @main: #259CB0;
 @second: #A87044;
 @grey: #606060;
+@error: #7D0902;
 
 @transition: all ease 0.35s;
 
@@ -90,7 +91,7 @@ form {
         border-color: @main;
       }
       &.hasError {
-        border-color: #7D0902;
+        border-color: @error;
       }
     }
     small {
@@ -109,6 +110,14 @@ form {
       color: #7D0902;
       flex-basis: 100%;
     }
+  }
+  .errors {
+    color: @error;
+    flex-basis: 100%;
+    text-align: center;
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 14px;
   }
   > button {
     background-color: @main;
