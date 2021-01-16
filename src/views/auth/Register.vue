@@ -55,11 +55,24 @@ export default {
           .get('http://127.0.0.1:8000/api/register', {
             headers: {
               token: '1234'
+            },
+            params: {
+              email: this.email,
+              password: this.password
             }
           })
           .then(response => {
-            this.apiErrors = JSON.parse(JSON.stringify(response.data))
-            console.log(JSON.parse(JSON.stringify(response.data)))
+            if (response.data.errors) {
+              const errors = JSON.parse(JSON.stringify(response.data.errors))
+              this.emailError = errors.email ? errors.email[0] : ''
+              this.passwordError = errors.password ? errors.password[0] : ''
+            }
+            if (response.data.accepted) {
+              // Stocking auth status as a cookie ? or just storage ?
+              // Then redirect to home page
+              // On redirige vers une page connecté mais avant on stock
+            }
+            console.log(response)
           })
       }
     },
