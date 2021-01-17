@@ -16,6 +16,7 @@
 <script>
 import InputType from '../../components/form/InputType'
 import axios from 'axios'
+import md5 from 'js-md5'
 
 export default {
   name: 'Register',
@@ -58,7 +59,7 @@ export default {
             },
             params: {
               email: this.email,
-              password: this.password
+              password: md5(this.password.toUpperCase())
             }
           })
           .then(response => {
@@ -68,6 +69,8 @@ export default {
               this.passwordError = errors.password ? errors.password[0] : ''
             }
             if (response.data.accepted) {
+              console.log(response.data.token)
+              localStorage.token = response.data.token
               // Stocking auth status as a cookie ? or just storage ?
               // Then redirect to home page
               // On redirige vers une page connecté mais avant on stock
